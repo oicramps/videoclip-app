@@ -14,6 +14,8 @@ const useVideosQuery = () => {
       (video: Video) =>
         ({
           ...video,
+          title: video.title.toString(),
+          artist: video.artist.toString(),
           genre: data.genres.find((genre) => genre.id === video.genre_id),
         } as VideoWithGenre),
     )
@@ -22,7 +24,7 @@ const useVideosQuery = () => {
   const { data, error, isLoading } = useQuery('videos', getVideos)
 
   return {
-    videos: data ?? ([] as VideoWithGenre[]),
+    data: data,
     error,
     isLoading,
   }

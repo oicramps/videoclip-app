@@ -1,24 +1,18 @@
-import React from 'react'
-import useVideosQuery from '../../hooks/useVideosQuery'
+import { VideoWithGenre } from '../../../types'
 import Card from '../Card'
 
 type ListProps = {
-  title?: string
+  videos: VideoWithGenre[]
 }
 
-const List = (props: ListProps) => {
-  const { videos, error, isLoading } = useVideosQuery()
-
-  if (error) return <div>Request Failed</div>
-  if (isLoading) return <div>Loading...</div>
-
-  console.log(videos)
-
+const List = ({ videos }: ListProps) => {
   return (
-    <div className='grid auto-rows-auto grid-cols-3 gap-6'>
-      {videos.map((video) => (
-        <Card key={video.id} video={video} />
-      ))}
+    <div className='w-full overflow-auto px-24 pb-24'>
+      <div className='grid auto-rows-auto grid-cols-3 gap-6'>
+        {videos.map((video) => (
+          <Card key={video.id} video={video} />
+        ))}
+      </div>
     </div>
   )
 }
