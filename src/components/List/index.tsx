@@ -8,9 +8,9 @@ type ListProps = {
 
 const List = ({ videos }: ListProps) => {
   return (
-    <div className='w-full overflow-auto px-24 pb-24'>
+    <div className='w-full overflow-auto px-6 pb-24 lg:px-12 2xl:px-24'>
       {videos.length ? (
-        <div className='grid auto-rows-auto grid-cols-3 gap-6'>
+        <div className='grid auto-rows-auto grid-cols-1 gap-6 lg:grid-cols-2 2xl:grid-cols-3'>
           {videos.map((video) => (
             <Card key={video.id} video={video} />
           ))}

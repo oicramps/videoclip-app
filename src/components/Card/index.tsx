@@ -8,7 +8,7 @@ const Card = ({ video }: CardProps) => {
   return (
     <div className='h-90 relative overflow-hidden rounded-2xl shadow-lg'>
       <img
-        className='transform object-cover transition duration-500 hover:scale-110'
+        className='w-full transform object-cover transition duration-500 hover:scale-110'
         src={video.image_url}
         alt={video.title}
       />

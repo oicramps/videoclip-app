@@ -91,9 +91,9 @@ const Filter = ({ filter, onChange }: FilterProps) => {
         value={filter.search}
         onChange={handleSearch}
       />
-      <div className='flex w-full flex-row items-center justify-between gap-x-4'>
+      <div className='flex w-full flex-col items-center justify-between gap-6 md:flex-row'>
         <Select
-          className='flex-1'
+          className='w-full flex-1'
           placeholder='Filter by genre'
           options={genres.map(
             (genre) => ({ value: genre.id, label: genre.name, genre } as GenreSelectOption),
@@ -103,7 +103,7 @@ const Filter = ({ filter, onChange }: FilterProps) => {
           isMulti
         />
         <Select
-          className='w-1/4'
+          className='w-full md:w-2/5 lg:w-1/3'
           placeholder='Filter by year'
           options={generateYearsOptions().map((year) => ({ value: year, label: year }))}
           styles={selectStyles}

@@ -7,6 +7,7 @@ import Spinner from '../../components/Spinner'
 import { EmptyStateTypes } from '../../constants/emptyState'
 import useVideosQuery from '../../hooks/useVideosQuery'
 import filterReducer, { FilterActionTypes, filterInitialState, FilterValue } from './reducer'
+import logo from '../../assets/images/logo.png'
 
 const Main = () => {
   const [videos, setVideos] = useState<VideoWithGenre[]>([])
@@ -25,17 +26,6 @@ const Main = () => {
   const filterVideos = (video: VideoWithGenre) =>
     filterByGenre(video) && filterByAuthorOrTitle(video) && filterByYear(video)
 
-  useEffect(() => {
-    if (
-      localStorage.theme === 'dark' ||
-      (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)
-    ) {
-      document.documentElement.classList.add('dark')
-    } else {
-      document.documentElement.classList.remove('dark')
-    }
-  }, [])
-
   const { data, isError, isLoading } = useVideosQuery()
 
   useEffect(() => {
@@ -49,10 +39,17 @@ const Main = () => {
   }
 
   return (
-    <div className='mx-auto flex h-screen flex-col items-center gap-y-6 overflow-hidden bg-white dark:bg-gray-800'>
-      <div className='flex w-full flex-col gap-y-6 px-24 py-12'>
-        <div className='flex w-full flex-row items-center justify-between'>
-          <h1 className='text-black dark:text-white'>Video clips</h1>
+    <div className='mx-auto flex h-screen flex-col items-center overflow-hidden bg-gray-800'>
+      <div className='flex w-full flex-col gap-y-6 py-12 px-6 lg:px-12 2xl:px-24'>
+        <div className='flex w-full flex-row items-center gap-x-4'>
+          <img
+            src={logo}
+            alt='logo'
+            title='XITE'
+            className='w-24 cursor-pointer'
+            onClick={() => window.open('https://www.xite.nl/')}
+          />
+          <h1 className='text-white'>Video clips</h1>
         </div>
         <Filter filter={filter} onChange={handleChange} />
       </div>

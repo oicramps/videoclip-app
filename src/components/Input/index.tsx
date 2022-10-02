@@ -18,7 +18,7 @@ const Input = ({ value, placeholder, onChange }: InputProps) => {
       </span>
       <input
         type='text'
-        className='w-full rounded-2xl bg-slate-400 py-5 px-7 pl-16 focus:outline-none dark:bg-gray-700 dark:text-white'
+        className='w-full rounded-2xl bg-gray-700 py-5 px-7 pl-16 text-white focus:outline-none'
         placeholder={placeholder}
         onChange={handleChange}
         value={value}
