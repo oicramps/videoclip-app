@@ -24,7 +24,7 @@ const useVideosQuery = () => {
   const { data, error, isLoading } = useQuery('videos', getVideos)
 
   return {
-    data: data,
+    data,
     error,
     isLoading,
   }
