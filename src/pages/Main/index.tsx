@@ -1,21 +1,16 @@
 import { useEffect, useReducer, useState } from 'react'
 import { VideoWithGenre } from '../../../types'
+import EmptyState from '../../components/EmptyState'
 import Filter from '../../components/Filter'
 import List from '../../components/List'
+import Spinner from '../../components/Spinner'
+import { EmptyStateTypes } from '../../constants/emptyState'
 import useVideosQuery from '../../hooks/useVideosQuery'
-import filterReducer, { FilterActionTypes, FilterState, FilterValue } from './reducer'
-
-const initialState: FilterState = {
-  search: '',
-  genre: [],
-  year: undefined,
-}
+import filterReducer, { FilterActionTypes, filterInitialState, FilterValue } from './reducer'
 
 const Main = () => {
   const [videos, setVideos] = useState<VideoWithGenre[]>([])
-  const [filter, dispatch] = useReducer(filterReducer, initialState)
-
-  console.log('filter', filter)
+  const [filter, dispatch] = useReducer(filterReducer, filterInitialState)
 
   const filterByAuthorOrTitle = (video: VideoWithGenre) =>
     !filter.search ||
@@ -41,16 +36,13 @@ const Main = () => {
     }
   }, [])
 
-  const { data, error, isLoading } = useVideosQuery()
+  const { data, isError, isLoading } = useVideosQuery()
 
   useEffect(() => {
     if (!videos.length && data) {
       setVideos(data)
     }
   }, [data, videos.length])
-
-  if (error) return <div>Request Failed</div>
-  if (isLoading) return <div>Loading...</div>
 
   const handleChange = (type: FilterActionTypes, value: FilterValue) => {
     dispatch({ type, value })
@@ -64,8 +56,13 @@ const Main = () => {
         </div>
         <Filter filter={filter} onChange={handleChange} />
       </div>
-
-      <List videos={videos.filter(filterVideos)} />
+      {isError ? (
+        <EmptyState type={EmptyStateTypes.ERROR} />
+      ) : isLoading ? (
+        <Spinner />
+      ) : (
+        <List videos={videos.filter(filterVideos)} />
+      )}
     </div>
   )
 }

@@ -21,11 +21,15 @@ const useVideosQuery = () => {
     )
   }
 
-  const { data, error, isLoading } = useQuery('videos', getVideos)
+  const { data, isError, isLoading } = useQuery('videos', getVideos, {
+    onError: (error) => {
+      console.error(error)
+    },
+  })
 
   return {
     data,
-    error,
+    isError,
     isLoading,
   }
 }
