@@ -2,6 +2,15 @@
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
+## Setup
+
+To be able to run this app, you will need to have a `.env` file containing the following environment variables:
+
+```
+REACT_APP_API_URL
+```
+Which contains the API URL we are using to request the data used by the app. To make it simple, you can duplicate the `.env.example` file
+
 ## Available Scripts
 
 In the project directory, you can run:
