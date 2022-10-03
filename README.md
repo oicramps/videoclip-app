@@ -11,6 +11,9 @@ REACT_APP_API_URL
 ```
 Which contains the API URL we are using to request the data used by the app. To make it simple, you can duplicate the `.env.example` file
 
+## Demo
+You can see a running demo [here](https://videoclip-app.vercel.app/).
+
 ## Available Scripts
 
 In the project directory, you can run:
