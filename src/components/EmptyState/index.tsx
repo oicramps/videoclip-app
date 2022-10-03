@@ -22,9 +22,9 @@ const EmptyState = ({ type = EmptyStateTypes.NO_RESULTS }: EmptyStateProps) => {
 
   return (
     <div className='flex w-full flex-col items-center justify-center gap-4'>
-      <h1 className='dark:text-white'>{emptyData.title}</h1>
+      <h1 className='text-white'>{emptyData.title}</h1>
       {emptyData.icon}
-      <p className='dark:text-white'>{emptyData.description}.</p>
+      <p className='text-white'>{emptyData.description}.</p>
     </div>
   )
 }
