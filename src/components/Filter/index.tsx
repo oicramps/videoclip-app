@@ -1,4 +1,10 @@
-import Select, { ActionMeta, CSSObjectWithLabel, MultiValue, OptionProps } from 'react-select'
+import Select, {
+  ActionMeta,
+  ControlProps,
+  CSSObjectWithLabel,
+  MultiValue,
+  OptionProps,
+} from 'react-select'
 import colors from 'tailwindcss/colors'
 import theme from 'tailwindcss/defaultTheme'
 import { Genre } from '../../../types'
@@ -12,12 +18,12 @@ const selectStyles = {
     ...provided,
     color: colors.gray[400],
   }),
-  control: (provided: CSSObjectWithLabel) => ({
+  control: (provided: CSSObjectWithLabel, state: ControlProps) => ({
     ...provided,
     backgroundColor: colors.gray[700],
     border: 'none',
     borderRadius: theme.borderRadius['2xl'],
-    boxShadow: 'none',
+    boxShadow: state.isFocused ? `0 0 0 1px ${colors.orange[400]}` : 'none',
     padding: `${theme.spacing[3]}`,
   }),
   input: (provided: CSSObjectWithLabel) => ({
