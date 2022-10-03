@@ -11,7 +11,7 @@ import { Genre } from '../../../types'
 import useGenresQuery from '../../hooks/useGenresQuery'
 import { FilterActionTypes, FilterState, FilterValue } from '../../pages/Main/reducer'
 import { generateYearsOptions } from '../../utils/date'
-import Input from '../Input'
+import SearchInput from '../SearchInput'
 
 const selectStyles = {
   placeholder: (provided: CSSObjectWithLabel) => ({
@@ -92,7 +92,7 @@ const Filter = ({ filter, onChange }: FilterProps) => {
 
   return (
     <>
-      <Input
+      <SearchInput
         placeholder='Search by artist or title'
         value={filter.search}
         onChange={handleSearch}

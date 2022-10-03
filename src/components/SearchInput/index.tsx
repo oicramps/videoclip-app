@@ -1,12 +1,12 @@
 import { MagnifyingGlassIcon } from '@heroicons/react/24/solid'
 
-type InputProps = {
+type SearchInputProps = {
   value: string
   placeholder?: string
   onChange: (value: string) => void
 }
 
-const Input = ({ value, placeholder, onChange }: InputProps) => {
+const SearchInput = ({ value, placeholder, onChange }: SearchInputProps) => {
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     onChange(event.target.value)
   }
@@ -27,4 +27,4 @@ const Input = ({ value, placeholder, onChange }: InputProps) => {
   )
 }
 
-export default Input
+export default SearchInput
